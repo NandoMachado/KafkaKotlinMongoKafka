@@ -4,7 +4,7 @@
   localhost=29092
   partitions=1
   replication_factor=1
-  topic_name=Test
+  topic_name="Topic-name-test"
 
   # cub specific
   timeout=20

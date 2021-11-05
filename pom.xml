@@ -78,6 +78,19 @@
             <artifactId>kotlin-stdlib-jdk8</artifactId>
             <version>1.5.31</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.32</version>
+<!--            <scope>test</scope>-->
+        </dependency>
+
     </dependencies>
 
 </project>

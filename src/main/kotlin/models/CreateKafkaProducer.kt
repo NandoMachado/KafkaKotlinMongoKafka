@@ -2,15 +2,20 @@ package models
 
 import org.apache.kafka.clients.producer.KafkaProducer
 import org.apache.kafka.clients.producer.Producer
+import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.StringSerializer
 import java.util.*
 
 class CreateKafkaProducer {
-    fun createProducer(brokers : String) : Producer<String, String> {
-        val props = Properties()
-        props["bootstrap-servers"] = brokers
-        props["key-serializer"] = StringSerializer::class.java.canonicalName
-        props["value.serializer"] = StringSerializer::class.java.canonicalName
-        return KafkaProducer(props)
+    fun createProducer(): Producer<String, String> {
+        // Config properties
+        val bootstrapServers = "localhost:29092"
+        val properties = Properties()
+        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers)
+        properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer::class.java.canonicalName)
+        properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer::class.java.canonicalName)
+
+        // Creating producer
+        return KafkaProducer(properties)
     }
 }

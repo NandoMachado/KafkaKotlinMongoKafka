@@ -1,16 +1,14 @@
 package services.kafka
 
-import models.CreateKafkaProducer
+import models.KafkaProducerModel
 import org.apache.kafka.clients.producer.ProducerRecord
 
 class PublishEventToKafkaTopic {
     fun publish(){
-        val producer = CreateKafkaProducer().createProducer()
+        val producer = KafkaProducerModel().createProducer()
 
-        // Creating producer record
         val record = ProducerRecord<String, String>("topic-name-test", "This is my first topic")
 
-        // Sending record
         producer.send(record)
         producer.flush()
         producer.close()

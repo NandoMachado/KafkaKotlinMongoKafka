@@ -6,7 +6,7 @@ import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.common.serialization.StringSerializer
 import java.util.*
 
-class CreateKafkaProducer {
+class KafkaProducerModel {
     fun createProducer(): Producer<String, String> {
         // Config properties
         val bootstrapServers = "localhost:29092"

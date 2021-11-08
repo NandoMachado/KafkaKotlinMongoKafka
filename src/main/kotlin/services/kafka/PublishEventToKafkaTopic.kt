@@ -5,9 +5,8 @@ import org.apache.kafka.clients.producer.ProducerRecord
 
 class PublishEventToKafkaTopic {
     fun publish(){
-        val producer = KafkaProducerModel().createProducer()
-
-        val record = ProducerRecord<String, String>("topic-name-test", "This is my first topic")
+        val producer = KafkaProducerModel().createProducer("localhost:29092")
+        val record = ProducerRecord<String, String>("outboundTopic", "Outbound topic event")
 
         producer.send(record)
         producer.flush()

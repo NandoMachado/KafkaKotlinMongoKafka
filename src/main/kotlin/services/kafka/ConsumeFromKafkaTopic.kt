@@ -4,12 +4,13 @@ import models.KafkaConsumerModel
 import org.apache.kafka.clients.consumer.ConsumerRecords
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import services.SaveToDB
 import java.time.Duration
 
 class ConsumeFromKafkaTopic {
 
     private val logger: Logger = LoggerFactory.getLogger("consumer")
-    private val consumer = KafkaConsumerModel().createConsumer("localhost:29092", "listener")
+    private val consumer = KafkaConsumerModel().createConsumer(groupID = "listener")
 
     fun listen() {
         consumer.subscribe(listOf("inboundTopic"))
@@ -18,12 +19,9 @@ class ConsumeFromKafkaTopic {
             for (record in consumerRecords) {
                 logger.info("Key: ${record.key()}, Value: ${record.value()}.")
                 logger.info("Partition: ${record.partition()}, Offset: ${record.offset()}.")
-                PublishEventToKafkaTopic().publish()
+//                TODO: SaveToDB()
+                PublishEventToKafkaTopic().publish(record.value())
             }
         }
     }
-}
-
-fun main(){
-    ConsumeFromKafkaTopic().listen()
 }

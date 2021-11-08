@@ -1,17 +1,19 @@
 package services.kafka
 
 import models.KafkaProducerModel
-import org.apache.kafka.clients.producer.Callback
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import java.time.Instant
 
 class PublishEventToKafkaTopic {
-    fun publish() {
-        val producer = KafkaProducerModel().createProducer("localhost:29092")
-        val record = ProducerRecord<String, String>("outboundTopic", "Outbound topic event")
-        val logger: Logger = LoggerFactory.getLogger("outboundProducer")
 
+    private val now = Instant.now()
+    private val producer = KafkaProducerModel().createProducer("localhost:29092")
+    private val logger: Logger = LoggerFactory.getLogger("producer")
+    private val record = ProducerRecord<String, String>("outboundTopic","Outbound topic event: $now")
+
+    fun publish() {
         producer.send(record) { recordMetadata, e: Exception? ->
             if (e == null) {
                 logger.info(
@@ -29,6 +31,7 @@ class PublishEventToKafkaTopic {
     }
 }
 
-fun main(){
-    PublishEventToKafkaTopic().publish()
-}
+//fun main(){
+//    PublishEventToKafkaTopic().publish()
+//    ConsumeFromKafkaTopic().listen()
+//}

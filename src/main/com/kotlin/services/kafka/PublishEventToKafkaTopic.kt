@@ -13,7 +13,7 @@ class PublishEventToKafkaTopic {
 
     fun publish(message : String) {
         val record = ProducerRecord<String, String>(
-            "outboundTopic",
+            "${Constants().outboundTopic}",
             "${Constants().nowTimeStamp}: $message"
         )
         producer.send(record) { recordMetadata, e: Exception? ->

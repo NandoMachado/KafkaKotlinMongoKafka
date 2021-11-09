@@ -1,5 +1,6 @@
 package services.kafka
 
+import Constants
 import models.KafkaConsumerModel
 import org.apache.kafka.clients.consumer.ConsumerRecords
 import org.slf4j.Logger
@@ -12,7 +13,7 @@ class ConsumeFromKafkaTopic {
     private val consumer = KafkaConsumerModel().createConsumer(groupID = "listener")
 
     fun listen() {
-        consumer.subscribe(listOf("inboundTopic"))
+        consumer.subscribe(listOf("${Constants().inboundTopic}"))
         while (true) {
             val consumerRecords : ConsumerRecords<String, String> = consumer.poll(Duration.ofMillis(100))
             for (record in consumerRecords) {

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-source constants
+source src/main/resources/application.properties
 
 echo "Stopping containers..." && \
 docker compose down

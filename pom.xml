@@ -25,7 +25,7 @@
     </repositories>
 
     <build>
-        <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <sourceDirectory>src/main/com/kotlin</sourceDirectory>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
@@ -48,6 +48,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <languageVersion>1.6</languageVersion>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>

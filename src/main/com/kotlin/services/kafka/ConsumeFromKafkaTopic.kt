@@ -4,7 +4,6 @@ import models.KafkaConsumerModel
 import org.apache.kafka.clients.consumer.ConsumerRecords
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import services.SaveToDB
 import java.time.Duration
 
 class ConsumeFromKafkaTopic {

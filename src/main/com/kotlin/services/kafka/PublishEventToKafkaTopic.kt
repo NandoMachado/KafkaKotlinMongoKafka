@@ -1,5 +1,6 @@
 package services.kafka
 
+import Constants
 import models.KafkaProducerModel
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.slf4j.Logger
@@ -13,7 +14,7 @@ class PublishEventToKafkaTopic {
     fun publish(message : String) {
         val record = ProducerRecord<String, String>(
             "outboundTopic",
-            "${Constants.nowTimeStamp}: $message"
+            "${Constants().nowTimeStamp}: $message"
         )
         producer.send(record) { recordMetadata, e: Exception? ->
             if (e == null) {

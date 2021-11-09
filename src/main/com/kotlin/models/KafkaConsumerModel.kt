@@ -1,5 +1,6 @@
 package models
 
+import Constants
 import org.apache.kafka.clients.consumer.Consumer
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.clients.consumer.KafkaConsumer
@@ -8,7 +9,7 @@ import java.util.*
 
 class KafkaConsumerModel {
     fun createConsumer(
-        bootstrapServer : String = Constants.bootstrapServer,
+        bootstrapServer : String = Constants().bootstrapServer,
         groupID : String,
     ) : Consumer<String, String> {
 

@@ -9,7 +9,7 @@ import java.util.*
 
 class KafkaConsumerModel {
     fun createConsumer(
-        bootstrapServer : String = Constants().bootstrapServer,
+        bootstrapServer : String = Constants().kafkabootstrapServer,
         groupID : String,
     ) : Consumer<String, String> {
 

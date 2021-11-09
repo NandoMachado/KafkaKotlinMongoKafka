@@ -8,7 +8,7 @@ import org.apache.kafka.common.serialization.StringSerializer
 import java.util.*
 
 class KafkaProducerModel {
-    fun createProducer(bootstrapServer : String = Constants().bootstrapServer): Producer<String, String> {
+    fun createProducer(bootstrapServer : String = Constants().kafkabootstrapServer): Producer<String, String> {
         // Config properties
         val properties = Properties()
         properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer)
